@@ -1,15 +1,9 @@
 const cucumber = require('cypress-cucumber-preprocessor').default
+const { cypressBrowserPermissionsPlugin } = require('cypress-browser-permissions');
 const { defineConfig } = require("cypress");
 //import "cypress-cucumber-attach-screenshots-to-failed-steps";
 
 module.exports = defineConfig({
-  'cypress-cucumber-preprocessor': {
-
-    nonGlobalStepDefinitions: false,
-
-    step_definitions: './cypress/e2e/stepDefinitions/*_stepDef.ts',
-
-  },
   experimentalWebKitSupport: true,
   video: true,
   projectId: 'jk7zr1',
@@ -26,16 +20,23 @@ module.exports = defineConfig({
     // Setting this option to true will result in a default CRF of 32.
     videoCompression: true,
     setupNodeEvents(on, config) {
-      // const cucumber = require('cypress-cucumber-preprocessor').default
-      // const browserify = require('@cypress/browserify-preprocessor');
-      // const options = {
-      //   ...browserify.defaultOptions,
-      //   typescript: require.resolve('typescript'),
-      // };
-      // on('file:preprocessor', cucumber(options));
+      config = cypressBrowserPermissionsPlugin(on, config);
+      const cucumber = require('cypress-cucumber-preprocessor').default
+      const browserify = require('@cypress/browserify-preprocessor');
+      const options = {
+        ...browserify.defaultOptions,
+        typescript: require.resolve('typescript'),
+      };
+      on('file:preprocessor', cucumber(options));
       return config;
     },
     supportFile: false,
+    env: {
+      geolocation: {
+        latitude: 41.8781,
+        longitude: -87.6298
+      }
+    },
     specPattern: "cypress/e2e/**/*.feature",
     numTestsKeptInMemory: 0,
     experimentalMemoryManagement: true,
