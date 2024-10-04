@@ -6,13 +6,13 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   experimentalWebKitSupport: true,
   video: true,
-  projectId: 'jk7zr1',
+  projectId: 'zwqz49',
   // https://docs.cypress.io/guides/guides/web-security
   // https://www.cypress.io/blog/2020/02/12/working-with-iframes-in-cypress/
   chromeWebSecurity: false,
   e2e: {
     baseUrl: 'https://hauch.org/',
-    defaultCommandTimeout: 15000,
+    defaultCommandTimeout: 5000,
     trashAssetsBeforeRuns: true,
     // The quality setting for the video compression, in Constant Rate Factor (CRF). 
     // The value can be false or 0 to disable compression or a CRF between 1 and 51, 
@@ -40,6 +40,6 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.feature",
     numTestsKeptInMemory: 0,
     experimentalMemoryManagement: true,
-    retries: 4
+    retries: 0
   },
 });
