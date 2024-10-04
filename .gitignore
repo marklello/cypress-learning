@@ -1,0 +1,10 @@
+node_modules
+cypress/screenshots
+cypress/test-results/
+results/
+npm_install_debug.log
+tmpBstackPackages/
+log/
+tests.zip
+.env
+videos

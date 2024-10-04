@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "types": ["cypress", "node"],
+      "strict": true
+    },
+    "include": [
+      "**/*.ts",
+      "cypress/support/*.ts",
+      "cypress.config.ts",
+      "cypress/plugins/index.js",
+      "cypress/reporting/*.js",
+      "cucumber-html-report.js"    
+    ],
+    "exclude": [
+      "node_modules"
+    ],
+    "types": ["cypress", "cypress-grep", "node"]
+  }
+    
